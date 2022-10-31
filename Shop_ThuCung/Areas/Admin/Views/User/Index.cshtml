@@ -1,0 +1,90 @@
+﻿@model PagedList.IPagedList<Shop_ThuCung.Models.User>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layouts.cshtml";
+}
+
+@section Header{
+    Quản lý User
+}
+<div>
+    @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-group" }))
+    {
+        <div class="row">
+            <div class="col-sm-4 form form">
+                <input type="text" name="keyWord" class="form-control" value="@ViewBag.keyWord" />
+            </div>
+            <div>
+                <input type="submit" value="Search" class="btn btn-secondary" />
+            </div>
+        </div>
+    }
+
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                UserName
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Address
+            </td>
+            <td>
+                Email
+            </td>
+            <td>
+                Phone
+            </td>
+            <td>
+                Status
+            </td>
+            <td>
+                #
+            </td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.ID
+                </td>
+                <td>
+                    @item.UserName
+                </td>
+
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Address
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @item.Phone
+                </td>
+                <td>
+                    @(item.Status == true ? "Hoạt động" : "Khóa")
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new {ID=item.ID})" class="btn btn-success">Edit</a>
+                    <a href="@Url.Action("Delete", new {ID=item.ID})" class="btn btn-danger" onclick="return confirm('Bạn có chắc xóa user?')">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+<div id="pageCuaTao">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyWord = ViewBag.keyWord }))
+</div>
+    
