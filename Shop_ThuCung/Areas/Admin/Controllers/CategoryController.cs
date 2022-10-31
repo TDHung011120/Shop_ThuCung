@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop_ThuCung.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,11 @@ namespace Shop_ThuCung.Areas.Admin.Controllers
             return View();
         }
         public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Category model)
         {
             return View();
         }
