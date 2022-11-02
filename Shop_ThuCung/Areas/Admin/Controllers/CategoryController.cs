@@ -15,7 +15,7 @@ namespace Shop_ThuCung.Areas.Admin.Controllers
         public ActionResult Index(string keyWord,int page=1,int pageSize=10)
         {
             CategoryDAO dao = new CategoryDAO();
-            var categoris= dao.GetListCategory(keyWord, page, page);
+            var categoris= dao.GetListCategory(keyWord, page, pageSize);
             return View( categoris);
         }
         public ActionResult Create()
@@ -34,7 +34,29 @@ namespace Shop_ThuCung.Areas.Admin.Controllers
                     return RedirectToAction("Index", "Category", new { Area = "Admin" });
                 }
                 else
-                    ModelState.AddModelError("", "Thêm User thành công");
+                    ModelState.AddModelError("", "Thêm không thành công");
+            }
+            return View("Index");
+        }
+        public ActionResult Edit(int ID)
+        {
+            CategoryDAO dao = new CategoryDAO();
+            var category= dao.GetByID(ID);
+            return View(category);
+        }
+        [HttpPost]
+        public ActionResult Edit(Category model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new CategoryDAO();
+                long id = dao.Edit(model);
+                if (id > 0)
+                {
+                    return RedirectToAction("Index", "Category", new { Area = "Admin" });
+                }
+                else
+                    ModelState.AddModelError("", "Sửa thông tin không thành công");
             }
             return View("Index");
         }
