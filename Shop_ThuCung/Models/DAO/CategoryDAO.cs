@@ -41,7 +41,7 @@ namespace Shop_ThuCung.Models.DAO
         {
             return db.Categories.Find(ID);
         }
-        public IEnumerable<Category> GetListUser(string keyWord, int page, int pageSize)
+        public IEnumerable<Category> GetListCategory(string keyWord, int page, int pageSize)
         {
             IOrderedQueryable<Category> model = db.Categories;
             if (!string.IsNullOrEmpty(keyWord))

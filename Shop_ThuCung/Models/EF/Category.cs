@@ -42,6 +42,6 @@ namespace Shop_ThuCung.Models
 
         public bool? ShowOnHome { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
     }
 }
