@@ -60,7 +60,7 @@ namespace Shop_ThuCung.Areas.Admin.Controllers
                     return RedirectToAction("Index", "User", new { Area = "Admin" });
                 }
                 else
-                    ModelState.AddModelError("", "Thêm User không thành công");
+                    ModelState.AddModelError("", "Sửa User không thành công");
             }
             return View("Index");
 
