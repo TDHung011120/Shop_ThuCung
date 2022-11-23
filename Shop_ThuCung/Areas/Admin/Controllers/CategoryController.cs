@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace Shop_ThuCung.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         // GET: Admin/Category
-        public ActionResult Index(string keyWord,int page=1,int pageSize=10)
+        public ActionResult Index(string keyWord="",int page=1,int pageSize=10)
         {
             CategoryDAO dao = new CategoryDAO();
             var categoris= dao.GetListCategory(keyWord, page, pageSize);
@@ -60,6 +60,11 @@ namespace Shop_ThuCung.Areas.Admin.Controllers
             }
             return View("Index");
         }
-
+        public ActionResult Delete(int ID)
+        {
+            CategoryDAO dao = new CategoryDAO();
+            var result = dao.Delete(ID);
+            return RedirectToAction("Index");
+        }
     }
 }
