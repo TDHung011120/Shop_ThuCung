@@ -11,6 +11,7 @@ namespace Shop_ThuCung.Areas.Admin.Controllers
         // GET: Admin/Content
         public ActionResult Index()
         {
+
             return View();
         }
         public ActionResult Create()

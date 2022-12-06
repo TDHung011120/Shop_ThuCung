@@ -84,7 +84,7 @@
     </table>
 
 </div>
-<div id="pageCuaTao">
+<div>
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyWord = ViewBag.keyWord }))
 </div>
     
