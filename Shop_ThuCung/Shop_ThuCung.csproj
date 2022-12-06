@@ -175,6 +175,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DAO\CategoryDAO.cs" />
+    <Compile Include="Models\DAO\ContentDAO.cs" />
     <Compile Include="Models\EF\About.cs" />
     <Compile Include="Models\EF\Admin.cs" />
     <Compile Include="Models\DAO\AdminDAO.cs" />
