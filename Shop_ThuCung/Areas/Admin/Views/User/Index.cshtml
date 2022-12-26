@@ -9,6 +9,9 @@
 @section Header{
     Quản lý User
 }
+@section jsFooter{
+    <script src="~/Content/js/Controller/UserController.js"></script>
+    }
 <div>
     @using (Html.BeginForm("Index", "User", FormMethod.Get, new { @class = "form-group" }))
     {
@@ -72,10 +75,12 @@
                     @item.Phone
                 </td>
                 <td>
-                    @(item.Status == true ? "Hoạt động" : "Khóa")
+                    <a href="#" class="change-id" data-id="@item.ID">@(item.Status == true ? "Hoạt động" : "Khóa")</a>
+
                 </td>
                 <td>
                     <a href="@Url.Action("Edit", new {ID=item.ID})" class="btn btn-success">Edit</a>
+
                     <a href="@Url.Action("Delete", new {ID=item.ID})" class="btn btn-danger" onclick="return confirm('Bạn có chắc xóa user?')">Delete</a>
                 </td>
             </tr>
@@ -87,4 +92,3 @@
 <div>
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @keyWord = ViewBag.keyWord }))
 </div>
-    
