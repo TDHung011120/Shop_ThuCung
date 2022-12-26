@@ -65,11 +65,21 @@ namespace Shop_ThuCung.Areas.Admin.Controllers
             return View("Index");
 
         }
+        
         public ActionResult Delete(int ID)
         {
             UserDAO dao = new UserDAO();
             var result=dao.Delete(ID);
             return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public JsonResult ChangeStatus(int id)
+        {
+            var result = new UserDAO().ChangeStatus(id);
+            return Json(new
+            {
+                status = result
+            });
         }
     }
 }
